@@ -1,4 +1,4 @@
-package com.code.knab.knabofon.ui
+package com.code.knab.knabofon.ui.main
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
