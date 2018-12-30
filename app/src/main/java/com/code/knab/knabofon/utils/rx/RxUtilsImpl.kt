@@ -1,4 +1,4 @@
-package com.code.knab.knabofon.utils
+package com.code.knab.knabofon.utils.rx
 
 import io.reactivex.Scheduler
 

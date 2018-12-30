@@ -1,7 +1,8 @@
 package com.code.knab.knabofon.dagger
 
-import com.code.knab.knabofon.utils.RxUtils
-import com.code.knab.knabofon.utils.RxUtilsImpl
+import android.content.Context
+import com.code.knab.knabofon.utils.rx.RxUtils
+import com.code.knab.knabofon.utils.rx.RxUtilsImpl
 import dagger.Module
 import dagger.Provides
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -10,7 +11,7 @@ import java.util.concurrent.Executors
 import javax.inject.Singleton
 
 @Module
-class AppModule {
+class AppModule(context: Context) {
 
     @Provides
     @Singleton
