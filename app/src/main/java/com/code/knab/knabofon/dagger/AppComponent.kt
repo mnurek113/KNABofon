@@ -6,9 +6,10 @@ import com.code.knab.knabofon.ui.main.dagger.MainModule
 import dagger.Component
 import javax.inject.Singleton
 
-@Component(modules = arrayOf(AppModule::class))
+@Component(modules = arrayOf(AppModule::class, BluetoothModule::class))
 @Singleton
 interface AppComponent {
 
     fun plus(mainModule: MainModule): MainComponent
+
 }

@@ -7,11 +7,9 @@ import com.code.knab.knabofon.dagger.DaggerAppComponent
 class KNABofonApp: Application() {
 
     val component by lazy {
-
         DaggerAppComponent.builder()
                 .appModule(AppModule(this))
                 .build()
-
     }
 
     override fun onCreate() {
