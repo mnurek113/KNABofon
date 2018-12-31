@@ -4,14 +4,28 @@ import com.code.knab.knabofon.bluetooth.BluetoothFacade
 
 class MainModel(private val bluetoothFacade: BluetoothFacade) : MainMVP.Model {
     override fun bluetoothEnableDisable(): Boolean {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        if (bluetoothFacade.bluetoothAdapter.isEnabled()) {
+            disableBluetoothAdapter()
+            return true
+        } else {
+            return false
+        }
     }
 
     override fun checkDiscoveringState() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        if (bluetoothFacade.bluetoothAdapter.isDiscovering()) {
+            bluetoothFacade.bluetoothAdapter.cancelDiscovery()
+            bluetoothFacade.bluetoothAdapter.startDiscovery()
+        } else {
+            bluetoothFacade.bluetoothAdapter.startDiscovery()
+        }
     }
 
     override fun cancelDiscovering() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        bluetoothFacade.bluetoothAdapter.cancelDiscovery()
+    }
+
+    private fun disableBluetoothAdapter() {
+        bluetoothFacade.bluetoothAdapter.disable()
     }
 }

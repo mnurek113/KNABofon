@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity(), MainMVP.View {
     @Inject
     lateinit var presenter: MainMVP.Presenter
 
-    private var bluetoothDevicesList: ArrayList<BluetoothDevice> = ArrayList<>()
+    private var bluetoothDevicesList = ArrayList<BluetoothDevice>()
     private lateinit var deviceListAdapter: DeviceListAdapter
 
     private lateinit var newDevicesListView: ListView
