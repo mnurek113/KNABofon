@@ -8,7 +8,7 @@ import dagger.Provides
 import javax.inject.Singleton
 
 @Module
-class BluetoothModule(private val bluetoothAdapter : BluetoothAdapter) {
+class BluetoothModule {
 
     @Provides
     @Singleton

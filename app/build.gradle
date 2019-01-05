@@ -72,6 +72,9 @@ dependencies {
     //Picasso
     implementation 'com.squareup.picasso:picasso:2.5.2'
 
+    //Swipe Button
+    implementation "com.ebanx:swipe-button:$swipeButton_version"
+
     //TEST******************************************************************************************
 
     testImplementation 'junit:junit:4.12'

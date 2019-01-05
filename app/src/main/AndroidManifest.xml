@@ -11,6 +11,8 @@
         android:name="android.permission.BLUETOOTH_PRIVILEGED"
         tools:ignore="ProtectedPermissions" />
 
+    <uses-permission android:name="android.permission.VIBRATE" />
+
     <application
         android:name=".KNABofonApp"
         android:allowBackup="true"

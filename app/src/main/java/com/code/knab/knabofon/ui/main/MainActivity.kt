@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity(), MainMVP.View {
     lateinit var presenter: MainMVP.Presenter
 
     private var bluetoothDevicesList = ArrayList<BluetoothDevice>()
-    private lateinit var deviceListAdapter: DeviceListAdapter
+    private var deviceListAdapter: DeviceListAdapter? = null
 
     private lateinit var newDevicesListView: ListView
 
@@ -37,10 +37,10 @@ class MainActivity : AppCompatActivity(), MainMVP.View {
         newDevicesListView = findViewById(R.id.newDevicesListView)
 
         onOffButton.setOnClickListener {
-
+            presenter.btEnableDisable()
         }
         discoverButton.setOnClickListener {
-
+            presenter.btEnableDiscovering()
         }
 
         newDevicesListView.setOnItemClickListener({parent, view, position, id -> pairDevices(position) })
@@ -60,7 +60,7 @@ class MainActivity : AppCompatActivity(), MainMVP.View {
             this.finish()
         }
 
-        val pairingDevicesIntent: IntentFilter = IntentFilter(BluetoothDevice.ACTION_BOND_STATE_CHANGED)
+        val pairingDevicesIntent = IntentFilter(BluetoothDevice.ACTION_BOND_STATE_CHANGED)
         registerReceiver(presenter.bondingDevicesReceiver, pairingDevicesIntent)
     }
 
@@ -81,7 +81,7 @@ class MainActivity : AppCompatActivity(), MainMVP.View {
 
     override fun discoverDevices() {
         if(deviceListAdapter != null)
-            deviceListAdapter.clear()
+            deviceListAdapter?.clear()
         val btDiscoverIntent = IntentFilter(BluetoothDevice.ACTION_FOUND)
         registerReceiver(presenter.discoveredDevicesReceiver, btDiscoverIntent)
     }
