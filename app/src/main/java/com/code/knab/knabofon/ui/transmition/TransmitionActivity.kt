@@ -21,6 +21,8 @@ class TransmitionActivity : AppCompatActivity(), TransmitionMVP.View {
 
         vibrator = getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
 
+
+
         stopVibrationButton.setOnClickListener {
             vibrator.cancel()
         }
@@ -46,5 +48,17 @@ class TransmitionActivity : AppCompatActivity(), TransmitionMVP.View {
 
     override fun handleError(message: String) {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    var thread: Thread = object : Thread() {
+        override fun run() {
+            try {
+                Thread.sleep(2000) // As I am using LENGTH_LONG in Toast
+
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
+
+        }
     }
 }
