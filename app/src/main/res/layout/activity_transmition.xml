@@ -84,7 +84,7 @@
         app:initial_state="disabled"
         app:has_activate_state="true"
         android:visibility="invisible"
-        android:id="@+id/swipe_btn"/>
+        android:id="@+id/swipeButtotn"/>
 
     <ProgressBar
         android:id="@+id/progressBar"

@@ -14,7 +14,10 @@ import io.reactivex.Observable
  * Created by hp on 2017-09-16.
  */
 
-internal class TransmitionThread(private val bluetoothSocket: BluetoothSocket) : Thread() {
+internal class TransmitionThread(private val bluetoothSocket: BluetoothSocket?) : Thread() {
+
+    private val TAG = "Transmition thread"
+
     private val inputStream: InputStream?
     private val outputStream: OutputStream?
 
@@ -30,8 +33,8 @@ internal class TransmitionThread(private val bluetoothSocket: BluetoothSocket) :
         var tmpOutputStream: OutputStream? = null
 
         try {
-            tmpInputStream = this.bluetoothSocket.inputStream
-            tmpOutputStream = this.bluetoothSocket.outputStream
+            tmpInputStream = this.bluetoothSocket?.inputStream
+            tmpOutputStream = this.bluetoothSocket?.outputStream
         } catch (e: IOException) {
             e.printStackTrace()
         }
@@ -67,7 +70,7 @@ internal class TransmitionThread(private val bluetoothSocket: BluetoothSocket) :
 
     fun cancel() {
         try {
-            this.bluetoothSocket.close()
+            this.bluetoothSocket?.close()
         } catch (e: IOException) {
             e.printStackTrace()
         }
@@ -85,7 +88,4 @@ internal class TransmitionThread(private val bluetoothSocket: BluetoothSocket) :
 
     }
 
-    companion object {
-        private val TAG = "Transmition thread"
-    }
 }

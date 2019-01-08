@@ -60,7 +60,7 @@ internal class ConnectionAttemptThread(private val pairedDevice: BluetoothDevice
 
     }
 
-    fun devicesConnected(bluetoothSocket: BluetoothSocket) {
+    fun devicesConnected(bluetoothSocket: BluetoothSocket?) {
         this.transmitionThread = TransmitionThread(bluetoothSocket)
         transmitionThread!!.start()
     }

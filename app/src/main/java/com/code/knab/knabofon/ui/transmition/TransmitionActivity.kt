@@ -21,15 +21,10 @@ class TransmitionActivity : AppCompatActivity(), TransmitionMVP.View {
 
         vibrator = getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
 
-
-
-        stopVibrationButton.setOnClickListener {
-            vibrator.cancel()
-        }
     }
 
     override fun onSuccessfulConnection() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+
     }
 
     override fun showMessage(message: String) {

@@ -1,27 +1,22 @@
 package com.code.knab.knabofon.ui.transmition.mvp
 
 import android.bluetooth.BluetoothDevice
-
-import java.nio.charset.Charset
-
-import javax.inject.Inject
-
+import com.code.knab.knabofon.bluetooth.BluetoothFacade
+import com.code.knab.knabofon.ui.transmition.connection_service.BluetoothConnectionService
 import io.reactivex.Observable
-import knab.com.smaug.bluetooth.bluetooth_facade.BluetoothFacade
-import knab.com.smaug.dagger.ActivityScope
-import knab.com.smaug.transmition.connection_service.BluetoothConnectionService
+import java.nio.charset.Charset
 
 /**
  * Created by hp on 2017-09-08.
  */
-@ActivityScope
-class TModel @Inject
-constructor(private val bluetoothFacade: BluetoothFacade, private var bluetoothConnectionService: BluetoothConnectionService?) : TransmitionMVP.Model {
+
+class TModel (private val bluetoothFacade: BluetoothFacade,
+              private var bluetoothConnectionService: BluetoothConnectionService?) : TransmitionMVP.Model {
 
 
     override fun startConnectionService(): Boolean {
 
-        bluetoothConnectionService!!.init(bluetoothFacade.getBluetoothAdapter())
+        bluetoothConnectionService!!.init(bluetoothFacade.bluetoothAdapter)
 
         return false
     }
@@ -43,7 +38,7 @@ constructor(private val bluetoothFacade: BluetoothFacade, private var bluetoothC
     override fun cancelConnectionService(): Boolean {
         bluetoothConnectionService!!.close()
         bluetoothConnectionService = null
-        bluetoothFacade.getBluetoothAdapter().disable()
+        bluetoothFacade.bluetoothAdapter.disable()
         return false
     }
 }

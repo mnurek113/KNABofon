@@ -12,7 +12,7 @@ import io.reactivex.observers.DisposableObserver
  */
 
 class TPresenter(private val view: TransmitionMVP.View,
-                 private val model: TModel,
+                 private val model: TransmitionMVP.Model,
                  private val rxUtils: RxUtils) : TransmitionMVP.Presenter {
 
     private var string = ""
