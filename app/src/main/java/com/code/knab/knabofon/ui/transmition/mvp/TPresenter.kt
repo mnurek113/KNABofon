@@ -60,8 +60,11 @@ class TPresenter(private val view: TransmitionMVP.View,
                 Log.d(TAG, "Observer: onNext called.")
                 string = string + message
             }
-            view.showMessage(string)
-            string = ""
+            if (message == "DING-DONG!!!#") {
+                view.showMessage(string)
+                string = ""
+            }
+
         }
 
         override fun onError(e: Throwable) {

@@ -47,6 +47,13 @@ class MainActivity : AppCompatActivity(), MainMVP.View {
 
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        unregisterReceiver(presenter.discoveredDevicesReceiver)
+        unregisterReceiver(presenter.bondingDevicesReceiver)
+
+
+    }
     private fun pairDevices(position: Int) {
 
         var device: BluetoothDevice = bluetoothDevicesList.get(position)
