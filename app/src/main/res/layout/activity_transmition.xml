@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/transmition_background2"
     tools:context=".ui.transmition.TransmitionActivity">
 
     <TextView
@@ -14,16 +15,16 @@
         android:paddingRight="30dp"
         android:paddingTop="24dp"
         android:paddingBottom="24dp"
-
-        android:text="SMAUG"
+        android:text="KNABOFON"
+        android:textColor="@color/colorTitle"
         android:textSize="30dp"
         android:textAlignment="center"
-        android:id="@+id/smaugTextView"/>
+        android:id="@+id/knabofonTextView"/>
 
 
 
     <TextView
-        app:layout_constraintTop_toBottomOf="@+id/smaugTextView"
+        app:layout_constraintTop_toBottomOf="@+id/knabofonTextView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_width="wrap_content"
@@ -33,7 +34,7 @@
         android:layout_marginTop="20dp"
         android:layout_gravity="center"
         android:textSize="20dp"
-        android:text="Wiadomość"
+        android:text=""
         android:id="@+id/descriptionTextView"/>
 
     <TextView
@@ -53,13 +54,13 @@
 
     <com.ebanx.swipebtn.SwipeButton
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
+        android:layout_marginBottom="40dp"
         app:inner_text="SWIPE"
         app:inner_text_color="@android:color/white"
         app:inner_text_size="16sp"
@@ -75,6 +76,8 @@
         app:button_background="@drawable/shape_button"
         app:initial_state="disabled"
         app:has_activate_state="true"
+        app:button_image_disabled="@drawable/ic_lock_open_black_24dp"
+        app:button_image_enabled="@drawable/ic_lock_open_black_24dp"
         android:visibility="invisible"
         android:id="@+id/swipeButtotn"/>
 

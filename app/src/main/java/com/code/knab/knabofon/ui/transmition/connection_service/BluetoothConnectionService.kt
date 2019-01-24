@@ -52,7 +52,7 @@ class BluetoothConnectionService {
 
     fun read(): Observable<String> {
         return Observable.interval(0, 2, TimeUnit.SECONDS)
-                .flatMap { mapper -> transmitionThread!!.messageObservable }
+                .flatMap { mapper -> transmitionThread!!.getMessageObservable() }
     }
 
     fun close(): Boolean {

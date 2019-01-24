@@ -34,21 +34,48 @@ class TransmitionActivity : AppCompatActivity(), TransmitionMVP.View {
 
         vibrator = getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
 
+        swipeButtotn.setOnActiveListener {
+            setVibrationView(true)
+            vibrator.cancel()
+        }
+
         thread.start()
     }
+
+    override fun onStop() {
+        super.onStop()
+
+    }
+
 
     private fun init(pairedDevice: BluetoothDevice) {
         presenter.initConnectionListener()
         presenter.connect(pairedDevice)
     }
 
-    override fun onSuccessfulConnection() {
+    override fun onStartReading() {
         progressBar.visibility = View.GONE
     }
 
+    private val vibrationTimings: LongArray = longArrayOf(1000, 2000)
+
     override fun showMessage(message: String) {
 
-        val vibrationTimings: LongArray = longArrayOf(1000, 2000)
+        vibrate()
+
+        setVibrationView(false)
+
+    }
+
+    private fun setVibrationView(isSet: Boolean) {
+        if(isSet) {
+            swipeButtotn.visibility = View.GONE
+        }else {
+            swipeButtotn.visibility = View.VISIBLE
+        }
+    }
+
+    private fun vibrate() {
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             vibrator.vibrate(VibrationEffect.createWaveform(vibrationTimings, 0))
@@ -57,7 +84,6 @@ class TransmitionActivity : AppCompatActivity(), TransmitionMVP.View {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O) {
             vibrator.vibrate(vibrationTimings, 0)
         }
-
     }
 
     override fun handleError(message: String) {

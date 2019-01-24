@@ -15,7 +15,7 @@
         android:paddingRight="30dp"
         android:paddingTop="24dp"
         android:paddingBottom="24dp"
-        android:text="SMAUG"
+        android:text="KNABOFON"
         android:textSize="30dp"
         android:textAlignment="center"/>
 

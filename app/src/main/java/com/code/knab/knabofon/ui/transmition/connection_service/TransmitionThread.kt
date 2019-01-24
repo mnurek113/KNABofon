@@ -21,10 +21,9 @@ internal class TransmitionThread(private val bluetoothSocket: BluetoothSocket?) 
     private val inputStream: InputStream?
     private val outputStream: OutputStream?
 
-    var messageObservable: Observable<String>? = null
-        private set
+    private var messageObservable: Observable<String>? = Observable.just("")
 
-    private var string = ""
+    private var message = ""
 
     init {
         Log.d(TAG, "ConnectedThread: Starting.")
@@ -47,7 +46,8 @@ internal class TransmitionThread(private val bluetoothSocket: BluetoothSocket?) 
     override fun run() {
         val buffer = ByteArray(13)
         var bytes: Int
-        this.messageObservable = Observable.just("")
+        var string = ""
+
         while (true) {
             try {
                 while (!string.contains("#")) {
@@ -55,8 +55,7 @@ internal class TransmitionThread(private val bluetoothSocket: BluetoothSocket?) 
                     val incomingMessage = String(buffer, 0, bytes)
                     string = string + incomingMessage
                 }
-
-                this.messageObservable = Observable.just(string)
+                this.message = string
                 Log.d(TAG, "InputStream: $string")
                 string = ""
 
@@ -86,6 +85,12 @@ internal class TransmitionThread(private val bluetoothSocket: BluetoothSocket?) 
             Log.e(TAG, "write: Error writing to output stream. " + e.message)
         }
 
+    }
+
+    fun getMessageObservable() : Observable<String>? {
+        this.messageObservable = Observable.just(message)
+        message = ""
+        return this.messageObservable
     }
 
 }

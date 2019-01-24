@@ -11,7 +11,7 @@ import io.reactivex.Observable
 interface TransmitionMVP {
 
     interface View {
-        fun onSuccessfulConnection()
+        fun onStartReading()
         fun showMessage(message: String)
         fun handleError(message: String)
     }

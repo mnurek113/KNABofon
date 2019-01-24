@@ -23,8 +23,8 @@ class TPresenter(private val view: TransmitionMVP.View,
     }
 
     override fun connect(pairedDevice: BluetoothDevice) {
-        if (model.attemptConnection(pairedDevice))
-            view.onSuccessfulConnection()
+        model.attemptConnection(pairedDevice)
+
     }
 
     override fun sendMessage(message: String) {
@@ -39,7 +39,7 @@ class TPresenter(private val view: TransmitionMVP.View,
                         .observeOn(rxUtils.observScheduler)
                         .subscribeWith(MessageObserver())
         )
-
+        view.onStartReading()
 
     }
 
